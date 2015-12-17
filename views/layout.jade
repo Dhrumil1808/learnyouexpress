@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    base(href='/')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(ng-app='ListApp')
+    block content
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js')
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js')
+      
+    // App Scripts
+    script(type='text/javascript' src='javascripts/app.js')
+    script(type='text/javascript' src='javascripts/appCtrl.js')      
+    script(type='text/javascript' src='javascripts/routes.js')
+      
+    // Home Scripts
+    script(type='text/javascript' src='javascripts/home/ctrl.js')
+      
+    // About Scripts
+    script(type='text/javascript' src='javascripts/about/ctrl.js')
+      
+    // List Scripts
+    script(type='text/javascript' src='javascripts/list/ctrl.js')
+    script(type='text/javascript' src='javascripts/list/employee/ctrl.js')

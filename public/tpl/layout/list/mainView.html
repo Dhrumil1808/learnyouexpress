@@ -1,0 +1,8 @@
+<h3>List</h3>
+<p>List of employees at SRI WSD</p>
+<ul>
+  <li ng-repeat="employee in employees"><a ui-sref="layout.list.employee({id: employee._id})">{{employee.name}}</a></li>
+</ul>
+<a ui-sref="layout.list.addEmployee">add +</a>
+
+<div ui-view="listSub"><div>

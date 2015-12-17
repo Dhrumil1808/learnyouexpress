@@ -1,0 +1,4 @@
+<img ng-src="{{employee.img}}" alt="{{employee.name}}">
+<h4>Employee: {{employee.name}}</h4>
+<p ng-bind="employee.job"></p>
+<a ui-sref="layout.list.editEmployee({id: employee._id})">edit</a>

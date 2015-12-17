@@ -1,0 +1,7 @@
+<img ng-src="{{employee.img}}" alt="{{employee.name}}">
+<p>Name: <input ng-model="employee.name"/></p>
+<p>Image: <input ng-model="employee.img"/></p>
+<p>Job Description:</p>
+<textarea ng-model="employee.job" cols="30" rows="10"></textarea>
+<br>
+<button ng-click="update(employee)">update employee</button><button ng-click="delete(employee)">delete</button>
