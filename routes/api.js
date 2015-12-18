@@ -3,10 +3,10 @@ var router = express.Router();
 var jsonfile = require('jsonfile');
 var _ = require('lodash');
 
-var fileLocation = __dirname.split('/');
-fileLocation.pop();
-fileLocation.push('data', 'employees.json');
-file = fileLocation.join('/')
+var employeeFileLocation = __dirname.split('/');
+employeeFileLocation.pop();
+employeeFileLocation.push('data', 'employees.json');
+employeeFile = employeeFileLocation.join('/')
 
 /* GET Employee */
 router.get('/employee/:id', function(req, res, next) {
@@ -14,7 +14,7 @@ router.get('/employee/:id', function(req, res, next) {
 
   var id = req.params.id;
   var employee = {};
-  jsonfile.readFile(file, function(err, data) {
+  jsonfile.readFile(employeeFile, function(err, data) {
     if (err) console.error(err);
 
     employee = _.find(data, function(itr) {
@@ -40,8 +40,11 @@ router.get('/employee/:id', function(req, res, next) {
 router.get('/employees', function(req, res, next) {
   console.log('get employees')
 
-  jsonfile.readFile(file, function(err, data) {
+  jsonfile.readFile(employeeFile, function(err, data) {
     if (err) console.error(err);
+    console.log('sending employee data');
+    console.log(file)
+    console.log(data);
     res.json({
       employees: data
     })
@@ -53,7 +56,7 @@ router.put('/employees', function(req, res, next) {
   console.log('put employees')
   var employee = req.body;
 
-  jsonfile.readFile(file, function(err, data) {
+  jsonfile.readFile(employeeFile, function(err, data) {
     if (err) console.error(err);
 
     // Find index of employee
@@ -71,7 +74,7 @@ router.put('/employees', function(req, res, next) {
     // Set updated employee
     console.log('employee found')
     data[idx] = employee;
-    jsonfile.writeFile(file, data, function(err) {
+    jsonfile.writeFile(employeeFile, data, function(err) {
 
       if(err) {
         console.error(err);
@@ -92,7 +95,7 @@ router.post('/employees', function(req, res, next) {
   console.log('post employees')
   var employee = req.body;
 
-  jsonfile.readFile(file, function(err, data) {
+  jsonfile.readFile(employeeFile, function(err, data) {
     if (err) console.error(err);
 
     // Add employee to array
@@ -110,7 +113,7 @@ router.post('/employees', function(req, res, next) {
     data.push(employee);
 
     // Write new data to file
-    jsonfile.writeFile(file, data, function(err) {
+    jsonfile.writeFile(employeeFile, data, function(err) {
 
       if(err) {
         console.error(err);
@@ -133,7 +136,7 @@ router.delete('/employees/:id', function(req, res, next) {
   console.dir(req.params);
   var id = req.params.id;
 
-  jsonfile.readFile(file, function(err, data) {
+  jsonfile.readFile(employeeFile, function(err, data) {
     if (err) console.error(err);
     console.log(id);
     // Find index of employee
@@ -151,7 +154,7 @@ router.delete('/employees/:id', function(req, res, next) {
     // Delete employee
     console.log('employee found')
     data.splice(idx, 1);
-    jsonfile.writeFile(file, data, function(err) {
+    jsonfile.writeFile(employeeFile, data, function(err) {
 
       if(err) {
         console.error(err);

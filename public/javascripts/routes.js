@@ -2,8 +2,9 @@ angular
   .module('ListApp')
   .config(($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) => {
     // Clean Url
-    $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
+    // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!')
+    $urlRouterProvider.otherwise('/about');
   })
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider

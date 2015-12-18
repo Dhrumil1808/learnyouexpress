@@ -1,0 +1,15 @@
+extends blogLayout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  hr
+  h2 Recent posts
+  ul
+  each val, index in snippets
+    li
+      h4
+        a(href='/blog/post/' + val._id)= 'Post ' + index + ': ' + val.title
+      p= val.desc
+      time= val.date
+  // End ui-view main
